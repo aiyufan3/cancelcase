@@ -1,0 +1,82 @@
+{
+  "name": "cancelcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CancelCase \u2014 the buyer's side of a PayPal dispute. Cancelled, still charged? Prove it. File it. Track it. Recovery is never guaranteed.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22.12.0 <23 || >=24.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "demo": "tsx scripts/demo.ts",
+    "demo:reset": "tsx scripts/demo-reset.ts",
+    "demo:sandbox": "tsx scripts/demo-sandbox.ts",
+    "sandbox:check": "tsx scripts/sandbox-check.ts",
+    "sandbox:setup": "tsx scripts/sandbox-setup.ts",
+    "llm:check": "tsx scripts/llm-check.ts",
+    "db:migrate": "tsx scripts/db-migrate.ts",
+    "dev": "next dev --hostname 127.0.0.1 --port 3000",
+    "start": "next start --hostname 127.0.0.1 --port 3000",
+    "build": "next build",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "typecheck": "next typegen && tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --project unit --project integration",
+    "test:unit": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "test:e2e": "next build && playwright test",
+    "security:staged": "tsx scripts/security-staged.ts",
+    "deps:audit": "tsx scripts/deps-audit.ts",
+    "hooks:install": "tsx scripts/install-hooks.ts",
+    "prepare": "tsx scripts/install-hooks.ts --quiet"
+  },
+  "dependencies": {
+    "@langchain/core": "1.3.5",
+    "@langchain/langgraph": "1.7.2",
+    "@langchain/langgraph-checkpoint": "1.2.2",
+    "@langchain/langgraph-checkpoint-sqlite": "1.1.0",
+    "@paypal/agent-toolkit": "1.11.0",
+    "better-sqlite3": "12.11.1",
+    "langsmith": "0.11.8",
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.65.0",
+    "@secretlint/secretlint-rule-preset-recommend": "13.1.0",
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/better-sqlite3": "9.6.0",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "dotenv": "18.0.10",
+    "eslint": "10.14.0",
+    "eslint-config-next": "16.4.5",
+    "postcss": "8.5.32",
+    "prettier": "3.9.10",
+    "secretlint": "13.1.0",
+    "tailwindcss": "4.3.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ],
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "overrides": {
+      "@paypal/agent-toolkit>@langchain/core": "0.3.80"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$comment": "Production advisories accepted as residual risk after targeted remediation. Each entry is limited to the dependency path it was reviewed for; the same advisory on any other path fails `pnpm deps:audit`. Reachability claims are enforced by tests/unit/dependency-boundary.test.ts.",
+  "reviewBy": "2027-02-15",
+  "accepted": [
+    {
+      "id": "GHSA-29qv-4j9f-fjw5",
+      "module": "mathjs",
+      "via": "@paypal/agent-toolkit",
+      "reason": "Expression-parser code execution. The toolkit uses mathjs only for round() in create_order, which the allowlist never enables; no expression is evaluated. Fix is mathjs 15 (major) and the toolkit pins ^14."
+    },
+    {
+      "id": "GHSA-jvff-x2qm-6286",
+      "module": "mathjs",
+      "via": "@paypal/agent-toolkit",
+      "reason": "Same expression-parser class as GHSA-29qv-4j9f-fjw5; same reachability."
+    },
+    {
+      "id": "GHSA-3644-q5cj-c5c7",
+      "module": "langsmith",
+      "via": "@paypal/agent-toolkit>@langchain/core",
+      "reason": "Hub prompt pull deserialization. The app never pulls prompts. The fix is langsmith 0.6 (major); @langchain/core 0.3.80, the last 0.3 release, requires ^0.3."
+    },
+    {
+      "id": "GHSA-fw9q-39r9-c252",
+      "module": "langsmith",
+      "via": "@paypal/agent-toolkit>@langchain/core",
+      "reason": "Prototype pollution in the tracing client's internal set(). This copy runs only through LangChain's automatic tracer, whose environment switches the app removes at startup; the opt-in tracer uses the direct langsmith dependency instead."
+    },
+    {
+      "id": "GHSA-rr7j-v2q5-chgv",
+      "module": "langsmith",
+      "via": "@paypal/agent-toolkit>@langchain/core",
+      "reason": "Streaming token events bypass trace redaction. Reachable only through LangChain's automatic tracer, which the app switches off; the app streams no model tokens through LangChain."
+    },
+    {
+      "id": "GHSA-v34v-rq6j-cj6p",
+      "module": "langsmith",
+      "via": "@paypal/agent-toolkit>@langchain/core",
+      "reason": "SSRF through distributed-tracing headers (RunTree.fromHeaders). The app never parses tracing headers, and LangChain's automatic tracer is switched off."
+    },
+    {
+      "id": "GHSA-w5hq-g745-h8pq",
+      "module": "uuid",
+      "via": "@paypal/agent-toolkit>@langchain/core",
+      "reason": "Missing bounds check in v3/v5/v6 when a caller passes an output buffer. Fix is uuid 11 (major); @langchain/core 0.3.80 requires ^10."
+    },
+    {
+      "id": "GHSA-j4fx-xxwh-2485",
+      "module": "jsondiffpatch",
+      "via": "@paypal/agent-toolkit>ai",
+      "reason": "Prototype pollution in patch(). Only the toolkit's AI SDK entry loads the ai package; the app imports the LangChain entry only."
+    },
+    {
+      "id": "GHSA-33vc-wfww-vjfv",
+      "module": "jsondiffpatch",
+      "via": "@paypal/agent-toolkit>ai",
+      "reason": "XSS in the HTML diff formatter. Never loaded (see GHSA-j4fx-xxwh-2485)."
+    },
+    {
+      "id": "GHSA-rwvc-j5jr-mgvh",
+      "module": "ai",
+      "via": "@paypal/agent-toolkit",
+      "reason": "File-type allowlist bypass on uploads in the AI SDK. Never loaded; fix is ai 5 (major) and the toolkit pins ^4."
+    },
+    {
+      "id": "GHSA-866g-f22w-33x8",
+      "module": "@ai-sdk/provider-utils",
+      "via": "@paypal/agent-toolkit>ai",
+      "reason": "Unbounded response parsing in the AI SDK. Never loaded."
+    },
+    {
+      "id": "GHSA-mrhx-c7xc-m3w5",
+      "module": "zod",
+      "via": "@paypal/agent-toolkit",
+      "reason": "Memory exhaustion on huge unbounded arrays; no zod 3 release is patched. The audit reports it through the toolkit, which validates its tool arguments with this zod 3 copy; the same copy also satisfies the OpenAI client's optional peer, which the app never imports (the app calls the model with fetch). The app only passes small fixed argument objects to the eight read tools."
+    }
+  ]
+}

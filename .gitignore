@@ -1,0 +1,93 @@
+# ---------- secrets ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets/
+credentials*.json
+
+# ---------- private notes, prompts, AI tooling (never public) ----------
+.private/
+private/
+notes/
+*.private.md
+*.local.md
+PROMPT*.md
+/prompts/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+agent.md
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.codex/
+.windsurf/
+.continue/
+.github/copilot-instructions.md
+handoff*.md
+research-plan*.md
+
+# ---------- local data, evidence, recordings ----------
+data/local/
+evidence/local/
+uploads/
+recordings/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+logs/
+coverage/
+playwright-report/
+test-results/
+# Local generated files: trace exports, screenshots, scratch output. Never committed. Public
+# assets stay in docs/assets/ (README), src/app/ (app icons) and fixtures/ (demo documents).
+/outputs/
+
+# ---------- build / deps ----------
+node_modules/
+.pnpm-store/
+dist/
+build/
+out/
+.next/
+.turbo/
+.vercel/
+*.tsbuildinfo
+/next-env.d.ts
+.cache/
+
+# ---------- OS / editor ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# ---------- private workspace kits and SQLite sidecars ----------
+/*-kit/
+*.sqlite-*
+*.sqlite3-*
+*.db-*
+
+# ---------- signing keys and browser authentication artifacts ----------
+.ssh/
+id_rsa
+id_ed25519
+id_ecdsa
+id_dsa
+*.ppk
+*.pfx
+allowed_signers
+playwright/.auth/
+storage-state*.json
+auth-state*.json
+*.har
+
+# Full brand kit (local only; only the files the product and README use are tracked)
+docs/assets/cancelcase-brand/
