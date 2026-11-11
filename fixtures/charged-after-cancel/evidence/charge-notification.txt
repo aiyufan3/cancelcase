@@ -1,0 +1,13 @@
+PAYMENT NOTIFICATION (SYNTHETIC FIXTURE DATA)
+
+You sent a payment of USD 19.99 to Example Studio.
+
+Transaction reference (buyer view): FX-TXN-BUYER-SYNTHETIC-2
+Merchant reference: FX-TXN-SELLER-SYNTHETIC-2
+Subscription payment reference: FX-SALE-SYNTHETIC-2
+Payment initiated: 2026-11-08T12:00:00Z
+Payment completed: 2026-11-08T12:05:00Z
+Description: Example Studio Pro — monthly (service period 2026-11-08 to 2026-12-08)
+Status: Completed
+
+This notification is a synthetic fixture produced for a demonstration. It is not a PayPal message.

@@ -1,0 +1,13 @@
+EXAMPLE STUDIO — INTERNAL BILLING LOG EXTRACT (SYNTHETIC FIXTURE DATA)
+Customer: Alex Example (customer id CUST-SYN-4410)
+Plan: Example Studio Pro — monthly, USD 19.99
+
+2026-10-08T12:00:00Z  renewal.charged     amount=19.99 USD  ref=FX-TXN-SELLER-SYNTHETIC-1  status=COMPLETED
+2026-11-06T09:30:14Z  cancel.requested    channel=account_page  actor=customer
+2026-11-06T09:45:02Z  cancel.confirmed    effective=2026-11-07T12:00:00Z  confirmation=ES-CANCEL-SYN-7731  email_sent=true
+2026-11-06T09:45:03Z  billing.sync.queued note="billing-provider mandate update queued (nightly batch)"
+2026-11-08T12:00:00Z  renewal.charged     amount=19.99 USD  ref=FX-TXN-SELLER-SYNTHETIC-2  status=COMPLETED  note="mandate still active at provider; sync job failed 2026-11-07"
+2026-11-08T12:05:00Z  renewal.settled     ref=FX-TXN-SELLER-SYNTHETIC-2
+2026-11-09T08:00:00Z  refund.status       ref=FX-TXN-SELLER-SYNTHETIC-2  refunded=0.00 USD
+
+This extract is a synthetic fixture created for a demonstration; no real customer or merchant exists.

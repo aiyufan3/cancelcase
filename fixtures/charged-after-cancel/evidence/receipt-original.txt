@@ -1,0 +1,15 @@
+EXAMPLE STUDIO — RECEIPT (SYNTHETIC FIXTURE DATA)
+
+Receipt number: ES-SYN-2026-1008-0001
+Billed to: Alex Example <alex@example.com>
+Merchant: Example Studio <billing@example-studio.example>
+
+Plan: Example Studio Pro — monthly
+Amount: USD 19.99
+Payment method: PayPal (sandbox simulation)
+Transaction reference: FX-TXN-BUYER-SYNTHETIC-1
+Date: 2026-10-08T12:00:00Z
+Service period: 2026-10-08 to 2026-11-08
+
+Your subscription renews automatically every month until cancelled.
+This document is a synthetic fixture. No real merchant, buyer or payment exists.

@@ -1,0 +1,18 @@
+From: Example Studio <no-reply@example-studio.example>
+To: Alex Example <alex@example.com>
+Subject: Your Example Studio Pro subscription has been cancelled
+Date: 2026-11-06T09:45:00Z
+
+Hi Alex,
+
+We received your cancellation request on 2026-11-06 at 09:30 UTC through your account page.
+
+Your Example Studio Pro subscription is cancelled. Access continues until the end of your
+current billing period and ends on 2026-11-07 at 12:00 UTC. You will not be billed again.
+
+Cancellation confirmation number: ES-CANCEL-SYN-7731
+
+Thanks for being a subscriber.
+Example Studio Billing
+
+(SYNTHETIC FIXTURE DATA — this message was generated for a demonstration and refers to no real account.)

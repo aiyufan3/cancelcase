@@ -1,0 +1,179 @@
+{
+  "schema": "cancelcase.fixture/1",
+  "name": "charged-after-cancel",
+  "description": "Synthetic P0 story: a monthly subscription was cancelled with a confirmed effective time, and a later charge completed after that time. Names, references and documents are invented; nothing here is PayPal data.",
+  "clock": "2026-11-09T09:00:00Z",
+  "parties": {
+    "buyer": {
+      "alias": "Alex Example",
+      "accountAlias": "buyer_alex"
+    },
+    "merchant": {
+      "alias": "Example Studio"
+    }
+  },
+  "subscription": {
+    "label": "Example Studio Pro \u2014 monthly",
+    "amountCents": 1999,
+    "currency": "USD",
+    "providerRefs": [
+      {
+        "kind": "subscription_id",
+        "value": "FX-SUB-SYNTHETIC-1",
+        "provenance": "synthetic"
+      },
+      {
+        "kind": "plan_id",
+        "value": "FX-PLAN-SYNTHETIC-1",
+        "provenance": "synthetic"
+      }
+    ],
+    "cancellation": {
+      "requestedAt": "2026-11-06T09:30:00Z",
+      "evidence": ["cancellation-confirmation"]
+    }
+  },
+  "charge": {
+    "description": "Example Studio Pro \u2014 monthly renewal",
+    "eventTime": "2026-11-08T12:00:00Z",
+    "postedTime": "2026-11-08T12:05:00Z",
+    "status": "COMPLETED",
+    "amountCents": 1999,
+    "currency": "USD",
+    "refundedCents": 0,
+    "refundStateKnown": true,
+    "servicePeriodStart": "2026-11-08T00:00:00Z",
+    "servicePeriodEnd": "2026-12-08T00:00:00Z",
+    "arrearsIndicator": false,
+    "matchMethod": "explicit_reviewed_association",
+    "providerRefs": [
+      {
+        "kind": "subscription_sale_id",
+        "value": "FX-SALE-SYNTHETIC-2",
+        "provenance": "synthetic"
+      },
+      {
+        "kind": "buyer_transaction_id",
+        "value": "FX-TXN-BUYER-SYNTHETIC-2",
+        "provenance": "synthetic"
+      },
+      {
+        "kind": "seller_transaction_id",
+        "value": "FX-TXN-SELLER-SYNTHETIC-2",
+        "provenance": "synthetic"
+      }
+    ],
+    "evidence": ["charge-notification"]
+  },
+  "evidence": [
+    {
+      "key": "receipt-original",
+      "file": "evidence/receipt-original.txt",
+      "ownerRole": "buyer",
+      "visibility": "shared",
+      "kind": "receipt",
+      "label": "Original subscription receipt (October)",
+      "capturedAt": "2026-10-08T12:01:00Z",
+      "eventTime": "2026-10-08T12:00:00Z",
+      "facts": []
+    },
+    {
+      "key": "cancellation-confirmation",
+      "file": "evidence/cancellation-confirmation.txt",
+      "ownerRole": "buyer",
+      "visibility": "shared",
+      "kind": "cancellation_confirmation",
+      "label": "Cancellation confirmation email",
+      "capturedAt": "2026-11-06T09:46:00Z",
+      "eventTime": "2026-11-06T09:45:00Z",
+      "facts": [
+        {
+          "id": "fact_cancel_confirmation_number",
+          "kind": "policy",
+          "label": "Cancellation confirmation number",
+          "at": "2026-11-06T09:45:00Z",
+          "cents": null,
+          "currency": null,
+          "text": "Confirmation number ES-CANCEL-SYN-7731; the merchant wrote that no further billing would occur."
+        }
+      ]
+    },
+    {
+      "key": "cancellation-screenshot",
+      "file": "evidence/cancellation-screenshot.png",
+      "ownerRole": "buyer",
+      "visibility": "shared",
+      "kind": "screenshot",
+      "label": "Account page screenshot: subscription cancelled",
+      "capturedAt": "2026-11-06T09:47:00Z",
+      "eventTime": "2026-11-06T09:45:00Z",
+      "facts": []
+    },
+    {
+      "key": "charge-notification",
+      "file": "evidence/charge-notification.txt",
+      "ownerRole": "buyer",
+      "visibility": "shared",
+      "kind": "charge_record",
+      "label": "Payment notification for the November charge",
+      "capturedAt": "2026-11-08T12:06:00Z",
+      "eventTime": "2026-11-08T12:00:00Z",
+      "facts": []
+    },
+    {
+      "key": "merchant-billing-log",
+      "file": "evidence/merchant-billing-log.txt",
+      "ownerRole": "merchant",
+      "visibility": "private",
+      "kind": "merchant_record",
+      "label": "Merchant billing log extract",
+      "capturedAt": "2026-11-09T08:05:00Z",
+      "eventTime": "2026-11-08T12:00:00Z",
+      "facts": [
+        {
+          "id": "fact_merchant_sync_failure",
+          "kind": "policy",
+          "label": "Merchant mandate sync failure",
+          "at": "2026-11-07T12:00:00Z",
+          "cents": null,
+          "currency": null,
+          "text": "The merchant's billing log records that the provider mandate update queued on 2026-11-06 failed to sync on 2026-11-07, so the renewal ran on 2026-11-08."
+        }
+      ]
+    }
+  ],
+  "attestations": [
+    {
+      "key": "buyer-private-note",
+      "ownerRole": "buyer",
+      "visibility": "private",
+      "kind": "note",
+      "label": "Buyer's private note",
+      "capturedAt": "2026-11-08T13:00:00Z",
+      "eventTime": "2026-11-07T18:00:00Z",
+      "facts": [
+        {
+          "id": "fact_buyer_private_chat_attempt",
+          "kind": "contact",
+          "label": "Private note about a chat attempt",
+          "at": "2026-11-07T18:00:00Z",
+          "cents": null,
+          "currency": null,
+          "text": "Buyer's private note: tried the merchant's support chat on 2026-11-07 but gave up after waiting; no transcript was saved."
+        }
+      ]
+    }
+  ],
+  "case": {
+    "channel": "merchant_refund"
+  },
+  "demoHints": {
+    "confirmation": {
+      "receivedAt": "2026-11-06T09:45:00Z",
+      "effectiveAt": "2026-11-07T12:00:00Z",
+      "basis": "merchant_confirmation_document",
+      "evidence": ["cancellation-confirmation", "cancellation-screenshot"],
+      "note": "Values as they appear in the synthetic confirmation email. The operator records them explicitly; nothing is confirmed automatically."
+    }
+  }
+}
